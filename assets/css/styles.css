@@ -325,27 +325,15 @@ p { margin:0 0 16px; }
 .zones-band span { padding:8px 14px; border-radius:999px; background:#fff; border:1px solid var(--line); color:var(--muted); font-size:.82rem; }
 @media (max-width:900px) { .stats-bar,.trust-grid,.services-grid { grid-template-columns:repeat(2,1fr); } .about-split { grid-template-columns:1fr; } .about-photo,.about-photo img { min-height:300px; } .insta-grid { grid-template-columns:repeat(3,1fr); } .mini-gallery { grid-template-columns:repeat(2,1fr); } }
 @media (max-width:680px) { .stats-bar,.trust-grid,.services-grid,.insta-grid,.mini-gallery { grid-template-columns:repeat(2,1fr); } .stats-bar { margin-top:22px; gap:10px; } .stat-card { padding:16px 12px; } .stat-card strong { font-size:1.4rem; } .timeline-band { border-radius:26px; padding:46px 0; } .insta-head { display:block; } }
-/* ---- Elementos decorativos flotantes (globos, tarta) ---- */
-.decor-img { position:absolute; pointer-events:none; mix-blend-mode:multiply; filter:drop-shadow(0 14px 20px rgba(25,61,103,.1)); z-index:1; user-select:none; }
-.hero-copy { position:relative; }
-.decor-balloons-hero { width:118px; top:-38px; right:-6px; transform:rotate(8deg); }
-.decor-cake-panel { width:170px; right:-46px; bottom:-40px; transform:rotate(-4deg); }
-.page-hero-art img.decor-cake-corner { width:150px; height:auto; right:-8px; top:-30px; transform:rotate(6deg); }
-.page-hero-art img.decor-balloons-corner { width:130px; height:auto; left:-20px; bottom:-28px; transform:rotate(-10deg); }
-.page-hero-art img.decor-cupcakes-corner { width:170px; height:auto; left:-30px; bottom:-26px; transform:rotate(-6deg); }
-.page-hero-art img.decor-piniata-corner { width:150px; height:auto; left:-28px; bottom:-30px; transform:rotate(-8deg); }
-.page-hero-art img.decor-giftbox-corner { width:150px; height:auto; right:-24px; bottom:-28px; transform:rotate(6deg); }
-.page-hero-art img.decor-babyshoes-corner { width:140px; height:auto; right:-20px; top:-26px; transform:rotate(8deg); }
-.page-hero-art img.decor-cakepops-corner { width:150px; height:auto; right:-22px; top:-28px; transform:rotate(7deg); }
-.page-hero-art img.decor-teddybear-corner { width:120px; height:auto; right:-18px; top:-24px; transform:rotate(6deg); }
-.decor-garland-img { display:block; margin:0 auto; pointer-events:none; user-select:none; }
-.decor-garland-flags { width:min(560px,86%); margin-bottom:34px; }
-.decor-garland-balloons-banner { width:min(820px,94%); margin:8px auto 30px; }
-.decor-ribbon-banner { width:min(760px,94%); margin:8px auto 30px; }
-@media (max-width:680px) { .decor-garland-img { width:100%; margin-bottom:20px; } }
+/* ---- Insignias decorativas (contenidas, sin desbordes) ---- */
+.soft-panel { position:relative; }
+.page-hero-art { position:relative; }
+.decor-badge { position:absolute; z-index:3; width:72px; height:72px; padding:8px; border-radius:50%; background:rgba(255,253,249,.95); box-shadow:0 10px 22px rgba(28,47,94,.2); display:flex; align-items:center; justify-content:center; pointer-events:none; }
+.decor-badge img { width:100%; height:100%; object-fit:contain; display:block; }
+.decor-badge-tr { top:14px; right:14px; }
+.decor-badge-tl { top:14px; left:14px; }
+.decor-badge-br { bottom:14px; right:14px; }
+.decor-badge-bl { bottom:14px; left:14px; }
 .decor-banner-img { display:block; margin:26px auto 0; width:min(560px,86%); mix-blend-mode:multiply; pointer-events:none; user-select:none; }
-.soft-panel { position:relative; overflow:visible; }
-.page-hero-art { overflow:visible; }
-@media (max-width:900px) { .decor-balloons-hero { width:100px; top:-14px; right:2%; } .decor-cake-panel { width:120px; right:-20px; bottom:-24px; } .decor-cake-corner,.decor-balloons-corner { width:96px; } }
-@media (max-width:680px) { .decor-img { display:none; } .decor-banner-img { width:100%; margin-top:16px; } }
+@media (max-width:680px) { .decor-badge { width:56px; height:56px; padding:6px; } .decor-banner-img { width:100%; margin-top:16px; } }
 @media (prefers-reduced-motion:reduce) { *,*::before,*::after { animation-duration:.01ms!important; transition-duration:.01ms!important; scroll-behavior:auto!important; } }
