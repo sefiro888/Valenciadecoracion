@@ -338,8 +338,11 @@ p { margin:0 0 16px; }
 .page-hero-art img.decor-babyshoes-corner { width:140px; height:auto; right:-20px; top:-26px; transform:rotate(8deg); }
 .page-hero-art img.decor-cakepops-corner { width:150px; height:auto; right:-22px; top:-28px; transform:rotate(7deg); }
 .page-hero-art img.decor-teddybear-corner { width:120px; height:auto; right:-18px; top:-24px; transform:rotate(6deg); }
-.decor-bunting-divider { display:block; margin:0 auto 34px; width:min(640px,88%); mix-blend-mode:multiply; pointer-events:none; user-select:none; }
-@media (max-width:680px) { .decor-bunting-divider { width:100%; margin-bottom:20px; } }
+.decor-garland-img { display:block; margin:0 auto; pointer-events:none; user-select:none; }
+.decor-garland-flags { width:min(560px,86%); margin-bottom:34px; }
+.decor-garland-balloons-banner { width:min(820px,94%); margin:8px auto 30px; }
+.decor-ribbon-banner { width:min(760px,94%); margin:8px auto 30px; }
+@media (max-width:680px) { .decor-garland-img { width:100%; margin-bottom:20px; } }
 .decor-banner-img { display:block; margin:26px auto 0; width:min(560px,86%); mix-blend-mode:multiply; pointer-events:none; user-select:none; }
 .soft-panel { position:relative; overflow:visible; }
 .page-hero-art { overflow:visible; }
