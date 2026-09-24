@@ -325,15 +325,14 @@ p { margin:0 0 16px; }
 .zones-band span { padding:8px 14px; border-radius:999px; background:#fff; border:1px solid var(--line); color:var(--muted); font-size:.82rem; }
 @media (max-width:900px) { .stats-bar,.trust-grid,.services-grid { grid-template-columns:repeat(2,1fr); } .about-split { grid-template-columns:1fr; } .about-photo,.about-photo img { min-height:300px; } .insta-grid { grid-template-columns:repeat(3,1fr); } .mini-gallery { grid-template-columns:repeat(2,1fr); } }
 @media (max-width:680px) { .stats-bar,.trust-grid,.services-grid,.insta-grid,.mini-gallery { grid-template-columns:repeat(2,1fr); } .stats-bar { margin-top:22px; gap:10px; } .stat-card { padding:16px 12px; } .stat-card strong { font-size:1.4rem; } .timeline-band { border-radius:26px; padding:46px 0; } .insta-head { display:block; } }
-/* ---- Insignias decorativas (contenidas, sin desbordes) ---- */
-.soft-panel { position:relative; }
-.page-hero-art { position:relative; }
-.decor-badge { position:absolute; z-index:3; width:72px; height:72px; padding:8px; border-radius:50%; background:rgba(255,253,249,.95); box-shadow:0 10px 22px rgba(28,47,94,.2); display:flex; align-items:center; justify-content:center; pointer-events:none; }
-.decor-badge img { width:100%; height:100%; object-fit:contain; display:block; }
-.decor-badge-tr { top:14px; right:14px; }
-.decor-badge-tl { top:14px; left:14px; }
-.decor-badge-br { bottom:14px; right:14px; }
-.decor-badge-bl { bottom:14px; left:14px; }
+/* ---- Pegatinas decorativas (en el flujo de la página, nunca sobre fotos) ---- */
+.decor-sticker-row { display:flex; padding:6px 0 8px; }
+.decor-sticker-row.align-start { justify-content:flex-start; }
+.decor-sticker-row.align-end { justify-content:flex-end; }
+.decor-sticker-row.align-center { justify-content:center; }
+.decor-sticker-row img { width:112px; height:auto; display:block; filter:drop-shadow(0 12px 22px rgba(28,47,94,.22)); }
+.decor-sticker-row.rotate-left img { transform:rotate(-7deg); }
+.decor-sticker-row.rotate-right img { transform:rotate(7deg); }
 .decor-banner-img { display:block; margin:26px auto 0; width:min(560px,86%); mix-blend-mode:multiply; pointer-events:none; user-select:none; }
-@media (max-width:680px) { .decor-badge { width:56px; height:56px; padding:6px; } .decor-banner-img { width:100%; margin-top:16px; } }
+@media (max-width:680px) { .decor-sticker-row img { width:82px; } .decor-banner-img { width:100%; margin-top:16px; } }
 @media (prefers-reduced-motion:reduce) { *,*::before,*::after { animation-duration:.01ms!important; transition-duration:.01ms!important; scroll-behavior:auto!important; } }
