@@ -19,8 +19,21 @@ const currentPage = location.pathname.split('/').pop() || 'index.html';
 document.querySelectorAll('.nav-links > a').forEach(a => { if (a.getAttribute('href') === currentPage || (currentPage === 'index.html' && a.getAttribute('href') === 'index.html')) a.classList.add('active'); });
 const toggle = document.querySelector('.menu-toggle');
 const links = document.querySelector('.nav-links');
-if (toggle && links) toggle.addEventListener('click', () => { const open = links.classList.toggle('open'); toggle.setAttribute('aria-expanded', String(open)); });
-document.querySelectorAll('.nav-links a').forEach(a => a.addEventListener('click', () => links?.classList.remove('open')));
+const waHref = document.querySelector('.nav-ctas .btn-pink')?.getAttribute('href') || 'https://wa.me/34641586364';
+if (links) {
+  const extra = document.createElement('div');
+  extra.className = 'nav-mobile-extra';
+  extra.innerHTML = `<p>Decoración con globos en Valencia</p><div class="btns"><a class="btn btn-soft" href="https://www.instagram.com/deco_emma_vlc/" target="_blank" rel="noopener noreferrer">Instagram</a><a class="btn btn-pink" href="${waHref}" target="_blank" rel="noopener noreferrer">Hablemos ↗</a></div>`;
+  links.appendChild(extra);
+}
+const setMenu = open => { links?.classList.toggle('open', open); toggle?.setAttribute('aria-expanded', String(open)); toggle?.setAttribute('aria-label', open ? 'Cerrar menú' : 'Abrir menú'); document.body.classList.toggle('menu-open', open); };
+if (toggle && links) {
+  toggle.innerHTML = '<span></span><span></span><span></span>';
+  toggle.addEventListener('click', e => { e.stopPropagation(); setMenu(!links.classList.contains('open')); });
+  document.addEventListener('click', e => { if (links.classList.contains('open') && !links.contains(e.target)) setMenu(false); });
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') setMenu(false); });
+}
+document.querySelectorAll('.nav-links a').forEach(a => a.addEventListener('click', () => setMenu(false)));
 
 const slides = [...document.querySelectorAll('.hero-slide')];
 const dots = [...document.querySelectorAll('.hero-dots button')];
@@ -90,7 +103,31 @@ if (canObserve) {
   items.forEach(el => staggerObserver.observe(el));
 }
 
-const gutterDecor = ['img:decor-piniata-t.png','balloons','img:decor-cakepops-t.png','sparkles','img:decor-babyshoes-t.png','balloons','img:decor-giftbox-t.png','sparkles','img:decor-teddybear-t.png','balloons','img:decor-cupcakes-t.png','sparkles'];
+document.addEventListener('click', e => { document.querySelectorAll('.nav-category.open').forEach(c => { if (!c.contains(e.target)) { c.classList.remove('open'); c.querySelector('button')?.setAttribute('aria-expanded', 'false'); } }); });
+
+const waFloat = document.querySelector('.wa-float');
+if (waFloat) {
+  waFloat.innerHTML = '<svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.2-.4.2-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.8 11.8 0 0 0 4.5 4c1.7.7 2.3.8 3.2.6.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.1-1.2l-.5-.3Z"/></svg><span>Escríbenos</span>';
+  const bubble = document.createElement('div');
+  bubble.className = 'wa-bubble';
+  bubble.setAttribute('role', 'dialog');
+  bubble.setAttribute('aria-label', 'Mensaje de Deco Emma');
+  bubble.innerHTML = '<button class="wa-bubble-close" aria-label="Cerrar mensaje">×</button><img src="logo.png" alt=""><div><strong>¿Celebramos juntos? 🎈</strong><span>Cuéntame tu idea y te preparo una propuesta a medida, sin compromiso.</span><em>Escribir por WhatsApp</em></div>';
+  document.body.appendChild(bubble);
+  let dismissed = false;
+  try { dismissed = sessionStorage.getItem('waBubbleClosed') === '1'; } catch (err) {}
+  if (!dismissed) setTimeout(() => bubble.classList.add('show'), 3500);
+  bubble.addEventListener('click', e => {
+    if (e.target.closest('.wa-bubble-close')) {
+      bubble.classList.remove('show');
+      try { sessionStorage.setItem('waBubbleClosed', '1'); } catch (err) {}
+      return;
+    }
+    window.open(waFloat.href, '_blank', 'noopener');
+  });
+}
+
+const gutterDecor = ['img:decor-globos-pareja.png','img:decor-piniata-t.png','sparkles','img:decor-luna-t.png','img:decor-cakepops-t.png','balloons','img:decor-osito-crema.png','img:decor-babyshoes-t.png','sparkles','img:decor-biberon-t.png','img:decor-giftbox-t.png','img:decor-globos-ramo.png','img:decor-teddybear-t.png','balloons','img:decor-cupcakes-t.png'];
 document.querySelectorAll('main > section.section, main > section.insta-band').forEach((section, i) => {
   const kind = gutterDecor[i % gutterDecor.length];
   const el = document.createElement('div');
