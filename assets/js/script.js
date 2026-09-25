@@ -81,7 +81,7 @@ function animateCount(el) {
   requestAnimationFrame(tick);
 }
 
-const staggerSelector = '.category-card, .service-num-card, .trust-item, .stat-card, .gallery figure, .mini-gallery figure, .insta-grid a, .steps .step, .detail-card, .related-link, .faq-list details, .badge-pill';
+const staggerSelector = '.category-card, .service-num-card, .trust-item, .stat-card, .gallery figure, .mini-gallery figure, .insta-grid a, .steps .step, .detail-card, .related-link, .faq-list details, .badge-pill, .service-pill';
 if (canObserve) {
   const items = [...document.querySelectorAll(staggerSelector)];
   items.forEach(el => {
