@@ -103,6 +103,21 @@ if (canObserve) {
   items.forEach(el => staggerObserver.observe(el));
 }
 
+const relatedStyle = {
+  'cumpleanos.html':['🎈','sp-cumple'], 'bautizos.html':['🕊️','sp-bautizo'], 'revelacion.html':['✨','sp-revela'], 'baby-shower.html':['🧸','sp-baby'], 'graduaciones.html':['🎓','sp-grad'], 'decoracion-personalizada.html':['🎨','sp-perso'],
+  'arcos-organicos.html':['🌈','sp-arcos'], 'columnas-torres.html':['🗼','sp-columnas'], 'photocall-tematico.html':['📸','sp-photo'], 'numeros-nombres.html':['🔢','sp-numeros'], 'centros-mesa.html':['💐','sp-mesa'], 'montaje-domicilio.html':['🚚','sp-montaje'],
+  'index.html#categorias':['🎉','sp-cumple'], 'index.html#servicios':['🎀','sp-mesa'], 'index.html#inspiracion':['📷','sp-revela']
+};
+document.querySelectorAll('.related-link').forEach(a => {
+  if (a.querySelector('.rl-icon')) return;
+  const [icon, cls] = relatedStyle[a.getAttribute('href')] || ['✦','sp-cumple'];
+  const sub = a.querySelector('span');
+  const title = [...a.childNodes].filter(n => n.nodeType === 3).map(n => n.textContent).join('').trim();
+  const subText = sub ? sub.textContent.replace(/\s*→\s*$/, '') : '';
+  a.classList.add(cls);
+  a.innerHTML = `<span class="rl-icon" aria-hidden="true">${icon}</span><span class="rl-text">${title}<span>${subText}</span></span><span class="rl-arrow" aria-hidden="true">→</span>`;
+});
+
 document.addEventListener('click', e => { document.querySelectorAll('.nav-category.open').forEach(c => { if (!c.contains(e.target)) { c.classList.remove('open'); c.querySelector('button')?.setAttribute('aria-expanded', 'false'); } }); });
 
 const waFloat = document.querySelector('.wa-float');
